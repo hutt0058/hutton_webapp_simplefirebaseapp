@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Condensed:300,400">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./app.css">
+  <title>Week 9 - MTM6430</title>
+</head>
+<body ng-app="app">
+<div class="container row " id="contain" >
+
+
+  <section class="new-customer-form col-md-7 " ng-controller="CustomerCtrl as ctrl">
+    <h2>Add new customer</h2>
+    <form ng-submit="ctrl.addCustomer(ctrl.newCustomer)">
+      <div class="form-group">
+        <label for="first-name">First name</label>
+        <input type="text" class="form-control" id="first-name" required
+          ng-model="ctrl.newCustomer.firstName">
+      </div>
+      <div class="form-group">
+        <label for="first-name">Last name</label>
+        <input type="text" class="form-control" id="last-name" required
+          ng-model="ctrl.newCustomer.lastName">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" required
+          ng-model="ctrl.newCustomer.phone">
+      </div>
+            <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" required
+          ng-model="ctrl.newCustomer.email">
+      </div>
+         <div class="form-group">
+        <label for="birthday">Birthday</label>
+        <input type="text" class="form-control" id="birthday" required
+          ng-model="ctrl.newCustomer.birthday">
+      </div>
+    
+      <button type="submit" class="btn btn-primary btn-block">
+        Add new customer
+      </button>
+    </form>
+  </section>
+
+  <hr>
+    
+  
+<!----------         CUSTOMER LIST           --------------->
+  <section class="customer-list col-md-5" ng-controller="CustomerCtrl as ctrl">
+    <h2>Customer list<span class="text-muted pull-right"><span class="fa fa-users"></span> {{ctrl.customers.length}}</span></h2>
+    <div
+      class="customer-list-item"
+      ng-repeat="customer in ctrl.customers | orderBy: ['lastName', 'firstName', 'phone','email', 'birthday'] track by customer.$id"
+    >
+      <div class="form-inline">
+        <input type="text" class="form-control" ng-model="customer.firstName">&nbsp;
+        <input type="text" class="form-control" ng-model="customer.lastName">
+        <input type="text" class="form-control" ng-model="customer.phone">
+        <input type="text" class="form-control" ng-model="customer.email">
+        <input type="text" class="form-control" ng-model="customer.birthday">
+      </div>
+      <button class="btn btn-outline-primary btn-sm" ng-click="ctrl.save(customer)">
+        Save
+      </button>
+      <button class="btn btn-outline-danger btn-sm" ng-click="ctrl.remove(customer)">
+        <span class="fa fa-trash"></span>
+      </button>
+    </div>
+  </section>
+</div>
+  <!-- Load Angular -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+  <!-- Load Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+  <!-- Load AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <!-- Load our app -->
+  <script src="./app.module.js"></script>
+</body>
+</html>

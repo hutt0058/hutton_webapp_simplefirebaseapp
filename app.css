@@ -1,0 +1,43 @@
+body {
+  background-color: #feffff;
+  font-size: 16px;
+  color: rgba(0,0,0,0.87);
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+section { margin: 2rem 0; }
+
+
+.new-customer-form{
+  border: .75px solid darkgray;
+  border-radius: 15px;
+  padding: 40px;
+  
+}
+.customer-list{
+  background-color: aliceblue;
+  border: .75px solid darkgray ;
+  border-radius: 15px;
+  padding: 40px;
+  
+  
+}
+.customer-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+ 
+}
+.customer-list-item:last-child {
+  border-bottom: none;
+}
